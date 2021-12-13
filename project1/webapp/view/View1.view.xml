@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="ns.project1.controller.View1" xmlns:table="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true"  xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns="sap.m"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content >
+                    <VBox id="hbox">
+                    <Input id="no" placeholder="Student id"/>
+                    <Input id="name" placeholder="Student name"/>
+                    <Input id="gender" placeholder="Male or Female"/>
+                    <Button id="btn" text="Submit" press=".onSubmit"/>
+                    </VBox>
+                    <VBox id="smartVBox">
+	<sap.ui.comp.smarttable:SmartTable xmlns:sap.ui.comp.smarttable="sap.ui.comp.smarttable" useExportToExcel="true" useVariantManagement="true"
+		useTablePersonalisation="true" persistencyKey="CAP_SER" requestAtLeastFields="STDID,name,gender,title"
+		customData:useSmartToggle="true" customData:useSmartField="true" editTogglable="true" 
+		class="sapUiResponsiveContentPadding zTableLaunch zBorder sapUiSizeCozy" width="100%" direction="Column" fitContainer="true" enableAutoBinding="true"
+		id="classSmartTable" entitySet="Student" header="Students" placeToolbarInTable="true" showFullScreenButton="true" beforeExport="onBeforeExport"
+		visible="true" editToggled="onEditClassToggle" fieldChange="OnClassFieldChange" beforeRebindTable="onCommonDataReceived"
+		initiallyVisibleFields="STDID,name,gender,title">
+
+        <sap.ui.comp.smarttable:customToolbar>
+			<OverflowToolbar id="oftb1" class="zOverflowTB" design="Transparent">
+				<ToolbarSpacer id="tbs1"/>
+				<Button icon="sap-icon://save" id="button44" class="zbuttonmc zBtnBlue" type="Emphasized" press=".onSave"
+					/>
+                    			</OverflowToolbar>
+		</sap.ui.comp.smarttable:customToolbar>
+        	<table:Table id="uitable1" alternateRowColors="false" class="zUiTable" visibleRowCount="10" minAutoRowCount="5" threshold="100">
+            	</table:Table>	
+        </sap.ui.comp.smarttable:SmartTable>
+                    </VBox>
+
+                    <VBox id="mta">
+
+                    <Table visible="true" id="ID_DEMO"                                   
+                    items="{ path:'device>/Student'}" >
+                    <columns>
+                    <Column minScreenWidth="Tablet" demandPopin="true" id="col1">
+                    <Text text="Name" id="coltxt1"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" id="col2">
+                    <Text text="City" id="coltxt2" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" id="col3">
+                    <Text text="Amount" id="coltxt3"/>
+                    </Column>
+                    </columns> 
+
+                    <ColumnListItem id="cli1">
+                    <Text id="colval1" text="{device>STDID}"/>
+                     <Text id="colval2" text="{device>name}"/>
+                      <Text id="colval3" text="{device>title}"/>
+                    </ColumnListItem>
+                    </Table>
+                    </VBox>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

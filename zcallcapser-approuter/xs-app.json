@@ -1,0 +1,11 @@
+{
+  "authenticationMethod": "route",
+  "routes": [{
+    "source": "^/cap/(.*)$",
+    "target": "$1",
+    "destination": "CAP_SRV",
+    "authenticationType": "basic",
+    "csrfProtection": false
+  }],
+  "welcomeFile": "/nsproject1"
+}
